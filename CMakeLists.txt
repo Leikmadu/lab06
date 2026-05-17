@@ -1,43 +1,16 @@
-cmake_minimum_required(VERSION 3.14)
-project(lab05)
+cmake_minimum_required(VERSION 3.10)
+project(lab06)
 
-option(BUILD_TESTS "Build tests" OFF)
-option(COVERAGE "Enable coverage reporting" OFF)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Поддиректории
+add_subdirectory(formatter_lib)
+add_subdirectory(formatter_ex)
+add_subdirectory(solver_lib)
+add_subdirectory(hello_world)
+add_subdirectory(solver)
 add_subdirectory(banking)
 
-if(COVERAGE)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -O0 -g")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --coverage -O0 -g")
-endif()
-
-if(BUILD_TESTS)
-    enable_testing()
-    
-    include(FetchContent)
-    FetchContent_Declare(
-        googletest
-        GIT_REPOSITORY https://github.com/google/googletest.git
-        GIT_TAG release-1.12.1
-    )
-    FetchContent_MakeAvailable(googletest)
-    
-    add_executable(banking_tests
-        banking/tests/test_account.cpp
-        banking/tests/test_transaction.cpp
-    )
-    
-    target_link_libraries(banking_tests banking gtest_main gmock_main)
-    target_include_directories(banking_tests PRIVATE banking)
-    
-    add_test(NAME banking_tests COMMAND banking_tests)
-endif()
-
+# CPack конфигурация
 include(CPackConfig.cmake)
-
-
-# Установка исполняемых файлов
-install(TARGETS solver DESTINATION bin)
-install(TARGETS hello_world DESTINATION bin)
-install(TARGETS banking DESTINATION lib)
-install(FILES banking/Account.h banking/Transaction.h DESTINATION include)
