@@ -1,0 +1,132 @@
+name: Create Release Packages
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build_linux:
+    name: Build Linux packages (deb, rpm)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install RPM build tools
+        run: sudo apt-get update && sudo apt-get install -y rpm
+
+      - name: Configure CMake
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Package DEB
+        run: |
+          cd build
+          cpack -G DEB -C Release || echo "DEB package creation skipped"
+
+      - name: Package RPM
+        run: |
+          cd build
+          cpack -G RPM -C Release || echo "RPM package creation skipped"
+
+      - name: Upload Linux packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-packages
+          path: |
+            build/*.deb
+            build/*.rpm
+          if-no-files-found: warn
+
+  build_windows:
+    name: Build Windows package (msi)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Configure CMake
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Package MSI (WIX)
+        run: |
+          cd build
+          # WIX может не работать в GitHub Actions, пробуем с опциями
+          cpack -G WIX -C Release --verbose || echo "WIX package creation failed - skipping"
+        continue-on-error: true
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-package
+          path: build/*.msi
+          if-no-files-found: warn
+
+  build_macos:
+    name: Build macOS package (dmg)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Configure CMake
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Package DMG (DragNDrop)
+        run: |
+          cd build
+          cpack -G DragNDrop -C Release || echo "DMG package creation failed - skipping"
+        continue-on-error: true
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-package
+          path: build/*.dmg
+          if-no-files-found: warn
+
+  create_release:
+    name: Create GitHub Release and upload assets
+    needs: [build_linux, build_windows, build_macos]
+    runs-on: ubuntu-latest
+    if: always()
+    permissions:
+      contents: write
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: List files
+        run: |
+          echo "=== Linux packages ==="
+          find artifacts -name "*.deb" -o -name "*.rpm" 2>/dev/null || echo "No Linux packages"
+          echo "=== Windows packages ==="
+          find artifacts -name "*.msi" 2>/dev/null || echo "No Windows packages"
+          echo "=== macOS packages ==="
+          find artifacts -name "*.dmg" 2>/dev/null || echo "No macOS packages"
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            artifacts/**/*.deb
+            artifacts/**/*.rpm
+            artifacts/**/*.msi
+            artifacts/**/*.dmg
+          draft: false
+          prerelease: false
+          generate_release_notes: true
