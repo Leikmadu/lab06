@@ -35,3 +35,9 @@ endif()
 
 include(CPackConfig.cmake)
 
+
+# Установка исполняемых файлов
+install(TARGETS solver DESTINATION bin)
+install(TARGETS hello_world DESTINATION bin)
+install(TARGETS banking DESTINATION lib)
+install(FILES banking/Account.h banking/Transaction.h DESTINATION include)
