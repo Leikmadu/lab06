@@ -1,9 +1,9 @@
-## Laboratory work V
+## Laboratory work VI
 
-Данная лабораторная работа посвещена изучению фреймворков для тестирования на примере **GTest**
+Данная лабораторная работа посвещена изучению средств пакетирования на примере **CPack**
 
 ```sh
-$ open https://github.com/google/googletest
+$ open https://cmake.org/Wiki/CMake:CPackPackageGenerators
 ```
 
 ## Tasks
@@ -18,6 +18,10 @@ $ open https://github.com/google/googletest
 ```sh
 $ export GITHUB_USERNAME=<имя_пользователя>
 
+$ export GITHUB_EMAIL=<адрес_почтового_ящика>
+
+$ alias edit=<nano|vi|vim|subl>
+
 $ alias gsed=sed # for *-nix system
 ```
 
@@ -25,32 +29,26 @@ $ alias gsed=sed # for *-nix system
 $ cd ${GITHUB_USERNAME}/workspace
 
 $ pushd .
-```
 
-```sh
-~/Desktop/Leikmadur/workspace ~/Desktop/Leikmadur/workspace
-```
-
-```sh
 $ source scripts/activate
 ```
 
 ```sh
-$ git clone https://github.com/Leikmadu/lab04 lab06
+$ git clone https://github.com/Leikmadu/lab05 lab06
 ```
 
 ```sh
 Cloning into 'lab06'...
-remote: Enumerating objects: 120, done.
-remote: Counting objects: 100% (120/120), done.
-remote: Compressing objects: 100% (79/79), done.
-remote: Total 120 (delta 35), reused 116 (delta 31), pack-reused 0 (from 0)
-Receiving objects: 100% (120/120), 35.11 KiB | 653.00 KiB/s, done.
-Resolving deltas: 100% (35/35), done.
+remote: Enumerating objects: 167, done.
+remote: Counting objects: 100% (167/167), done.
+remote: Compressing objects: 100% (103/103), done.
+Receiving objects:  60% (101/167), 116.00 KiB | 211.00 KiB/Receiving objects:  61% (102/167), 116.00 KiB | 211.00 KiB/Receiving objects:  62% (104/167), 116.00 KiB | 211.00 KiB/Receiving objects:  63% (106/167), 116.00 KiB | 211.00 KiB/Receiving objects:  64% (107/167), 116.00 KiB | 211.00 KiB/Receiving objects:  65% (109/167), 116.00 KiB | 211.00 KiB/Receiving objects:  66% (111/167), 116.00 KiB | 211.00 KiB/Receiving objects:  67% (112/167), 116.00 KiB | 211.00 KiB/Receiving objects:  68% (114/167), 116.00 KiB | 211.00 KiB/Receiving objects:  69% (116/167), 116.00 KiB | 211.00 KiB/Receiving objects:  70% (117/167), 116.00 KiB | 211.00 KiB/Receiving objects:  71% (119/167), 220.00 KiB | 208.00 KiB/Receiving objects:  72% (121/167), 220.00 KiB | 208.00 KiB/Receiving objects:  73% (122/167), 220.00 KiB | 208.00 KiB/Receiving objects:  74% (124/167), 220.00 KiB | 208.00 KiB/Receiving objects:  75% (126/167), 220.00 KiB | 208.00 KiB/Receiving objects:  76% (127/167), 220.00 KiB | 208.00 KiB/Receiving objects:  77% (129/167), 220.00 KiB | 208.00 KiB/Receiving objects:  78% (131/167), 220.00 KiB | 208.00 KiB/Receiving objects:  79% (132/167), 220.00 KiB | 208.00 KiB/Receiving objects:  80% (134/167), 220.00 KiB | 208.00 KiB/remote: Total 167 (delta 47), reused 165 (delta 45), pack-reused 0 (from 0)
+Receiving objects:  81% (136/167), 220.00 KiB | 208.00 KiB/Receiving objects:  82% (137/167), 220.00 KiB | 208.00 KiB/Receiving objects:  83% (139/167), 220.00 KiB | 208.00 KiB/Receiving objects:  84% (141/167), 220.00 KiB | 208.00 KiB/Receiving objects:  85% (142/167), 220.00 KiB | 208.00 KiB/Receiving objects:  86% (144/167), 220.00 KiB | 208.00 KiB/Receiving objects:  87% (146/167), 220.00 KiB | 208.00 KiB/Receiving objects:  88% (147/167), 220.00 KiB | 208.00 KiB/Receiving objects:  89% (149/167), 220.00 KiB | 208.00 KiB/Receiving objects:  90% (151/167), 220.00 KiB | 208.00 KiB/Receiving objects:  91% (152/167), 220.00 KiB | 208.00 KiB/Receiving objects:  92% (154/167), 220.00 KiB | 208.00 KiB/Receiving objects:  93% (156/167), 220.00 KiB | 208.00 KiB/Receiving objects:  94% (157/167), 220.00 KiB | 208.00 KiB/Receiving objects:  95% (159/167), 220.00 KiB | 208.00 KiB/Receiving objects:  96% (161/167), 220.00 KiB | 208.00 KiB/Receiving objects:  97% (162/167), 220.00 KiB | 208.00 KiB/Receiving objects:  98% (164/167), 220.00 KiB | 208.00 KiB/Receiving objects:  99% (166/167), 220.00 KiB | 208.00 KiB/Receiving objects: 100% (167/167), 220.00 KiB | 208.00 KiB/Receiving objects: 100% (167/167), 230.56 KiB | 216.00 KiB/s, done.
+Resolving deltas: 100% (47/47), done.
 ```
 
-```sh
-$ cd projects/lab06
+```
+$ cd lab06
 
 $ git remote remove origin
 
@@ -58,555 +56,235 @@ $ git remote add origin https://github.com/${GITHUB_USERNAME}/lab06
 ```
 
 ```sh
-$ mkdir third-party
+$ gsed -i '/project(print)/a\
 
-$ git submodule add https://github.com/google/googletest third-party/gtest
-```
-
-```sh
-Cloning into '/home/kirill/Desktop/Leikmadur/workspace/lab06/third-party/gtest'...
-remote: Enumerating objects: 28637, done.
-remote: Counting objects: 100% (73/73), done.
-remote: Compressing objects: 100% (52/52), done.
-Receiving objects:   1% (287/28637), 76.01 KiB | 102.00 KiBReceiving objects:   2% (573/28637), 124.01 KiB | 93.00 KiBReceiving objects:   2% (725/28637), 220.01 KiB | 111.00 KiReceiving objects:   3% (860/28637), 276.01 KiB | 109.00 KiReceiving objects:   4% (1146/28637), 276.01 KiB | 109.00 KReceiving objects:   4% (1256/28637), 388.01 KiB | 128.00 KReceiving objects:   5% (1432/28637), 388.01 KiB | 128.00 KReceiving objects:   6% (1719/28637), 388.01 KiB | 128.00 KReceiving objects:   7% (2005/28637), 548.01 KiB | 154.00 KReceiving objects:   7% (2205/28637), 692.01 KiB | 161.00 KReceiving objects:   8% (2291/28637), 692.01 KiB | 161.00 KReceiving objects:   9% (2578/28637), 812.01 KiB | 168.00 KReceiving objects:   9% (2617/28637), 812.01 KiB | 168.00 KReceiving objects:  10% (2864/28637), 884.01 KiB | 165.00 KReceiving objects:  10% (3098/28637), 1012.01 KiB | 178.00 Receiving objects:  11% (3151/28637), 1012.01 KiB | 178.00 Receiving objects:  11% (3314/28637), 1.09 MiB | 174.00 KiBReceiving objects:  12% (3437/28637), 1.09 MiB | 174.00 KiBReceiving objects:  12% (3602/28637), 1.12 MiB | 168.00 KiBReceiving objects:  13% (3723/28637), 1.18 MiB | 156.00 KiBReceiving objects:  14% (4010/28637), 1.20 MiB | 131.00 KiBReceiving objects:  14% (4186/28637), 1.20 MiB | 131.00 KiBReceiving objects:  15% (4296/28637), 1.28 MiB | 121.00 KiBReceiving objects:  16% (4582/28637), 1.28 MiB | 121.00 KiBReceiving objects:  16% (4629/28637), 1.37 MiB | 116.00 KiBReceiving objects:  16% (4670/28637), 1.50 MiB | 104.00 KiBReceiving objects:  16% (4735/28637), 1.71 MiB | 127.00 KiBReceiving objects:  16% (4771/28637), 1.80 MiB | 122.00 KiBReceiving objects:  16% (4796/28637), 1.93 MiB | 139.00 KiBReceiving objects:  16% (4850/28637), 2.02 MiB | 138.00 KiBReceiving objects:  17% (4869/28637), 2.08 MiB | 131.00 KiBReceiving objects:  17% (4876/28637), 2.14 MiB | 125.00 KiBReceiving objects:  17% (4946/28637), 2.20 MiB | 125.00 KiBReceiving objects:  17% (5049/28637), 2.47 MiB | 138.00 KiBReceiving objects:  18% (5155/28637), 2.64 MiB | 163.00 KiBReceiving objects:  18% (5177/28637), 2.75 MiB | 164.00 KiBReceiving objects:  18% (5411/28637), 2.89 MiB | 182.00 KiBReceiving objects:  19% (5442/28637), 2.89 MiB | 182.00 KiBReceiving objects:  19% (5726/28637), 3.50 MiB | 284.00 KiBReceiving objects:  20% (5728/28637), 3.50 MiB | 284.00 KiBReceiving objects:  20% (5954/28637), 4.11 MiB | 360.00 KiBReceiving objects:  21% (6014/28637), 4.11 MiB | 360.00 KiBReceiving objects:  22% (6301/28637), 4.35 MiB | 374.00 KiBReceiving objects:  22% (6493/28637), 4.35 MiB | 374.00 KiBReceiving objects:  23% (6587/28637), 4.35 MiB | 374.00 KiBReceiving objects:  24% (6873/28637), 4.35 MiB | 374.00 KiBReceiving objects:  25% (7160/28637), 4.87 MiB | 452.00 KiBReceiving objects:  25% (7216/28637), 5.14 MiB | 484.00 KiBReceiving objects:  26% (7446/28637), 5.14 MiB | 484.00 KiBReceiving objects:  27% (7732/28637), 5.41 MiB | 495.00 KiBReceiving objects:  27% (7753/28637), 5.41 MiB | 495.00 KiBReceiving objects:  28% (8019/28637), 5.81 MiB | 522.00 KiBReceiving objects:  28% (8060/28637), 6.04 MiB | 506.00 KiBReceiving objects:  29% (8305/28637), 6.04 MiB | 506.00 KiBReceiving objects:  30% (8592/28637), 6.33 MiB | 510.00 KiBReceiving objects:  30% (8632/28637), 6.48 MiB | 456.00 KiBReceiving objects:  30% (8798/28637), 6.49 MiB | 444.00 KiBReceiving objects:  31% (8878/28637), 6.49 MiB | 444.00 KiBReceiving objects:  31% (9087/28637), 6.82 MiB | 371.00 KiBReceiving objects:  31% (9144/28637), 6.93 MiB | 302.00 KiBReceiving objects:  32% (9164/28637), 6.93 MiB | 302.00 KiBReceiving objects:  32% (9361/28637), 7.12 MiB | 229.00 KiBReceiving objects:  33% (9451/28637), 7.12 MiB | 229.00 KiBReceiving objects:  34% (9737/28637), 7.34 MiB | 219.00 KiBReceiving objects:  34% (9966/28637), 7.62 MiB | 249.00 KiBReceiving objects:  35% (10023/28637), 7.62 MiB | 249.00 KiReceiving objects:  36% (10310/28637), 7.86 MiB | 299.00 KiReceiving objects:  36% (10482/28637), 7.96 MiB | 270.00 KiReceiving objects:  36% (10519/28637), 8.02 MiB | 251.00 KiReceiving objects:  37% (10596/28637), 8.14 MiB | 247.00 KiReceiving objects:  37% (10630/28637), 8.14 MiB | 247.00 KiReceiving objects:  37% (10795/28637), 8.33 MiB | 246.00 KiReceiving objects:  38% (10883/28637), 8.43 MiB | 221.00 KiReceiving objects:  38% (11111/28637), 8.57 MiB | 191.00 KiReceiving objects:  39% (11169/28637), 8.57 MiB | 191.00 KiReceiving objects:  40% (11455/28637), 8.57 MiB | 191.00 KiReceiving objects:  40% (11612/28637), 8.90 MiB | 192.00 KiReceiving objects:  41% (11742/28637), 8.90 MiB | 192.00 KiReceiving objects:  41% (11954/28637), 9.00 MiB | 201.00 KiReceiving objects:  42% (12028/28637), 9.20 MiB | 234.00 KiReceiving objects:  43% (12314/28637), 9.30 MiB | 241.00 KiReceiving objects:  43% (12358/28637), 9.30 MiB | 241.00 KiReceiving objects:  44% (12601/28637), 9.52 MiB | 271.00 KiReceiving objects:  45% (12887/28637), 9.52 MiB | 271.00 KiReceiving objects:  46% (13174/28637), 9.70 MiB | 281.00 KiReceiving objects:  47% (13460/28637), 9.70 MiB | 281.00 KiReceiving objects:  47% (13581/28637), 9.70 MiB | 281.00 KiReceiving objects:  48% (13746/28637), 9.70 MiB | 281.00 KiReceiving objects:  49% (14033/28637), 9.86 MiB | 285.00 KiReceiving objects:  49% (14088/28637), 10.01 MiB | 278.00 KReceiving objects:  49% (14264/28637), 10.10 MiB | 238.00 KReceiving objects:  50% (14319/28637), 10.10 MiB | 238.00 KReceiving objects:  51% (14605/28637), 10.27 MiB | 268.00 KReceiving objects:  51% (14704/28637), 10.46 MiB | 276.00 KReceiving objects:  51% (14706/28637), 10.89 MiB | 300.00 KReceiving objects:  52% (14892/28637), 10.89 MiB | 300.00 KReceiving objects:  53% (15178/28637), 11.15 MiB | 300.00 KReceiving objects:  53% (15296/28637), 11.15 MiB | 300.00 KReceiving objects:  54% (15464/28637), 11.15 MiB | 300.00 KReceiving objects:  55% (15751/28637), 11.38 MiB | 314.00 KReceiving objects:  55% (16007/28637), 11.50 MiB | 315.00 KReceiving objects:  56% (16037/28637), 11.50 MiB | 315.00 KReceiving objects:  57% (16324/28637), 11.50 MiB | 315.00 KReceiving objects:  58% (16610/28637), 11.69 MiB | 326.00 KReceiving objects:  59% (16896/28637), 11.69 MiB | 326.00 KReceiving objects:  59% (16934/28637), 11.69 MiB | 326.00 KReceiving objects:  60% (17183/28637), 11.69 MiB | 326.00 KReceiving objects:  61% (17469/28637), 11.85 MiB | 344.00 KReceiving objects:  62% (17755/28637), 11.85 MiB | 344.00 KReceiving objects:  63% (18042/28637), 11.85 MiB | 344.00 KReceiving objects:  64% (18328/28637), 11.85 MiB | 344.00 KReceiving objects:  65% (18615/28637), 11.85 MiB | 344.00 KReceiving objects:  66% (18901/28637), 11.85 MiB | 344.00 KReceiving objects:  67% (19187/28637), 12.10 MiB | 361.00 KReceiving objects:  68% (19474/28637), 12.10 MiB | 361.00 KReceiving objects:  69% (19760/28637), 12.10 MiB | 361.00 KReceiving objects:  70% (20046/28637), 12.10 MiB | 361.00 KReceiving objects:  70% (20275/28637), 12.30 MiB | 378.00 KReceiving objects:  71% (20333/28637), 12.30 MiB | 378.00 KReceiving objects:  72% (20619/28637), 12.30 MiB | 378.00 KReceiving objects:  73% (20906/28637), 12.30 MiB | 378.00 KReceiving objects:  74% (21192/28637), 12.30 MiB | 378.00 KReceiving objects:  75% (21478/28637), 12.30 MiB | 378.00 KReceiving objects:  76% (21765/28637), 12.30 MiB | 378.00 KReceiving objects:  77% (22051/28637), 12.30 MiB | 378.00 KReceiving objects:  78% (22337/28637), 12.58 MiB | 406.00 KReceiving objects:  79% (22624/28637), 12.58 MiB | 406.00 KReceiving objects:  80% (22910/28637), 12.58 MiB | 406.00 KReceiving objects:  81% (23196/28637), 12.58 MiB | 406.00 KReceiving objects:  81% (23305/28637), 12.71 MiB | 345.00 KReceiving objects:  82% (23483/28637), 12.71 MiB | 345.00 KReceiving objects:  82% (23535/28637), 12.76 MiB | 296.00 KReceiving objects:  83% (23769/28637), 12.76 MiB | 296.00 KReceiving objects:  83% (24021/28637), 12.87 MiB | 265.00 KReceiving objects:  84% (24056/28637), 12.87 MiB | 265.00 KReceiving objects:  85% (24342/28637), 12.87 MiB | 265.00 KReceiving objects:  86% (24628/28637), 12.97 MiB | 259.00 KReceiving objects:  86% (24691/28637), 12.97 MiB | 259.00 KReceiving objects:  87% (24915/28637), 12.97 MiB | 259.00 KReceiving objects:  88% (25201/28637), 13.04 MiB | 242.00 KReceiving objects:  89% (25487/28637), 13.04 MiB | 242.00 KReceiving objects:  90% (25774/28637), 13.04 MiB | 242.00 KReceiving objects:  91% (26060/28637), 13.14 MiB | 232.00 KReceiving objects:  92% (26347/28637), 13.14 MiB | 232.00 KReceiving objects:  92% (26358/28637), 13.14 MiB | 232.00 KReceiving objects:  93% (26633/28637), 13.14 MiB | 232.00 KReceiving objects:  94% (26919/28637), 13.14 MiB | 232.00 KReceiving objects:  95% (27206/28637), 13.29 MiB | 212.00 KReceiving objects:  96% (27492/28637), 13.29 MiB | 212.00 KReceiving objects:  97% (27778/28637), 13.29 MiB | 212.00 KReceiving objects:  98% (28065/28637), 13.29 MiB | 212.00 KReceiving objects:  99% (28351/28637), 13.29 MiB | 212.00 KReceiving objects:  99% (28614/28637), 13.51 MiB | 210.00 KReceiving objects:  99% (28626/28637), 13.67 MiB | 188.00 Kremote: Total 28637 (delta 37), reused 22 (delta 20), pack-reused 28564 (from 2)
-Receiving objects: 100% (28637/28637), 13.73 MiB | 185.00 KReceiving objects: 100% (28637/28637), 13.78 MiB | 250.00 KiB/s, done.
-Resolving deltas: 100% (21270/21270), done.
-```
-
-```sh
-$ cd third-party/gtest && git checkout release-1.8.1 && cd ../..
-```
-
-```sh
-Note: switching to 'release-1.8.1'.
-
-You are in 'detached HEAD' state. You can look around, make experimental
-changes and commit them, and you can discard any commits you make in this
-state without impacting any branches by switching back to a branch.
-
-If you want to create a new branch to retain commits you create, you may
-do so (now or later) by using -c with the switch command. Example:
-
-  git switch -c <new-branch-name>
-
-Or undo this operation with:
-
-  git switch -
-
-Turn off this advice by setting config variable advice.detachedHead to false
-
-HEAD is now at 2fe3bd99 Merge pull request #1433 from dsacre/fix-clang-warnings
-```
-
-```sh
-$ git add third-party/gtest
-
-$ git commit -m"added gtest framework"
-```
-```sh
-$ gsed -i '/option(BUILD_EXAMPLES "Build examples" OFF)/a\
-
-option(BUILD_TESTS "Build tests" OFF)
+set(PRINT_VERSION_STRING "v\${PRINT_VERSION}")
 
 ' CMakeLists.txt
 
+$ gsed -i '/project(print)/a\
+
+set(PRINT_VERSION\
+
+  \${PRINT_VERSION_MAJOR}.\${PRINT_VERSION_MINOR}.\${PRINT_VERSION_PATCH}.\${PRINT_VERSION_TWEAK})
+
+' CMakeLists.txt
+
+$ gsed -i '/project(print)/a\
+
+set(PRINT_VERSION_TWEAK 0)
+
+' CMakeLists.txt
+
+$ gsed -i '/project(print)/a\
+
+set(PRINT_VERSION_PATCH 0)
+
+' CMakeLists.txt
+
+$ gsed -i '/project(print)/a\
+
+set(PRINT_VERSION_MINOR 1)
+
+' CMakeLists.txt
+
+$ gsed -i '/project(print)/a\
+
+set(PRINT_VERSION_MAJOR 0)
+
+' CMakeLists.txt
+
+$ git diff
+
+```
+
+```sh
+$ touch DESCRIPTION && nano DESCRIPTION
+```
+
+```sh
+Lab06 project: example of CPack usage.
+```
+
+```sh
+$ touch ChangeLog.md
+
+$ export DATE="`LANG=en_US date +'%a %b %d %Y'`"
+
+$ cat > ChangeLog.md <<EOF
+
+* ${DATE} ${GITHUB_USERNAME} <${GITHUB_EMAIL}> 0.1.0.0
+
+- Initial RPM release
+
+EOF
+```
+
+```sh
+$ cat > CPackConfig.cmake <<EOF
+
+include(InstallRequiredSystemLibraries)
+
+EOF
+```
+
+```sh
+$ cat >> CPackConfig.cmake <<EOF
+
+set(CPACK_PACKAGE_CONTACT ${GITHUB_EMAIL})
+
+set(CPACK_PACKAGE_VERSION_MAJOR \${PRINT_VERSION_MAJOR})
+
+set(CPACK_PACKAGE_VERSION_MINOR \${PRINT_VERSION_MINOR})
+
+set(CPACK_PACKAGE_VERSION_PATCH \${PRINT_VERSION_PATCH})
+
+set(CPACK_PACKAGE_VERSION_TWEAK \${PRINT_VERSION_TWEAK})
+
+set(CPACK_PACKAGE_VERSION \${PRINT_VERSION})
+
+set(CPACK_PACKAGE_DESCRIPTION_FILE \${CMAKE_CURRENT_SOURCE_DIR}/DESCRIPTION)
+
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "static C++ library for printing")
+
+EOF
+```
+
+```sh
+$ cat >> CPackConfig.cmake <<EOF
+
+set(CPACK_RESOURCE_FILE_LICENSE \${CMAKE_CURRENT_SOURCE_DIR}/LICENSE)
+
+set(CPACK_RESOURCE_FILE_README \${CMAKE_CURRENT_SOURCE_DIR}/README.md)
+
+EOF
+```
+
+```sh
+$ cat >> CPackConfig.cmake <<EOF
+
+set(CPACK_RPM_PACKAGE_NAME "print-devel")
+
+set(CPACK_RPM_PACKAGE_LICENSE "MIT")
+
+set(CPACK_RPM_PACKAGE_GROUP "print")
+
+set(CPACK_RPM_CHANGELOG_FILE \${CMAKE_CURRENT_SOURCE_DIR}/ChangeLog.md)
+
+set(CPACK_RPM_PACKAGE_RELEASE 1)
+
+EOF
+```
+
+```sh
+$ cat >> CPackConfig.cmake <<EOF
+
+set(CPACK_DEBIAN_PACKAGE_NAME "libprint-dev")
+
+set(CPACK_DEBIAN_PACKAGE_PREDEPENDS "cmake >= 3.0")
+
+set(CPACK_DEBIAN_PACKAGE_RELEASE 1)
+
+EOF
+```
+
+```sh
+$ cat >> CPackConfig.cmake <<EOF
+
+include(CPack)
+
+EOF
+```
+
+```sh
 $ cat >> CMakeLists.txt <<EOF
 
-if(BUILD_TESTS)
-  enable_testing()
-  add_subdirectory(third-party/gtest)
-  file(GLOB \${PROJECT_NAME}_TEST_SOURCES tests/*.cpp)
-  add_executable(check \${\${PROJECT_NAME}_TEST_SOURCES})
-  target_link_libraries(check \${PROJECT_NAME} gtest_main)
-  add_test(NAME check COMMAND check)
-endif()
+include(CPackConfig.cmake)
+
 EOF
 ```
 
 ```sh
-$ mkdir tests
-
-$ cat > tests/test1.cpp <<EOF
-
-#include <print.hpp>
-
-#include <gtest/gtest.h>
-
-TEST(Print, InFileStream)
-{
-  std::string filepath = "file.txt";
-  std::string text = "hello";
-  std::ofstream out{filepath};
-
-  print(text, out);
-  out.close();
-
-  std::string result;
-  std::ifstream in{filepath};
-  in >> result;
-
-  EXPECT_EQ(result, text);
-}
-EOF
+$ gsed -i 's/lab05/lab06/g' README.md
 ```
-
-```sh
-$ cmake -H. -B_build -DBUILD_TESTS=ON
-
-$ cmake --build _build
-```
-
-```sh
-[  8%] Building CXX object CMakeFiles/print.dir/sources/print.cpp.o
-[ 16%] Linking CXX static library libprint.a
-[ 16%] Built target print
-[ 25%] Building CXX object _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
-[ 33%] Linking CXX static library ../../../lib/libgtest.a
-[ 33%] Built target gtest
-[ 41%] Building CXX object _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
-[ 50%] Linking CXX static library ../../../lib/libgtest_main.a
-[ 50%] Built target gtest_main
-[ 58%] Building CXX object CMakeFiles/check.dir/tests/test1.cpp.o
-[ 66%] Linking CXX executable check
-[ 66%] Built target check
-[ 75%] Building CXX object _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
-[ 83%] Linking CXX static library ../../../lib/libgmock.a
-[ 83%] Built target gmock
-[ 91%] Building CXX object _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
-[100%] Linking CXX static library ../../../lib/libgmock_main.a
-[100%] Built target gmock_main
-
-
-```
-```
-$ cmake --build _build --target test
-```
-
-```sh
-Running tests...
-Test project /home/kirill/Desktop/Leikmadur/workspace/lab06/_build
-    Start 1: check
-1/1 Test #1: check ............................   Passed    0.00 sec
-
-100% tests passed, 0 tests failed out of 1
-
-Total Test time (real) =   0.02 sec
-```
-
-```sh
-$ _build/check
-```
-
-```sh
-Running main() from /home/kirill/Desktop/Leikmadur/workspace/lab06/_build/_deps/googletest-src/googletest/src/gtest_main.cc
-[==========] Running 1 test from 1 test suite.
-[----------] Global test environment set-up.
-[----------] 1 test from Print
-[ RUN      ] Print.InFileStream
-[       OK ] Print.InFileStream (0 ms)
-[----------] 1 test from Print (0 ms total)
-
-[----------] Global test environment tear-down
-[==========] 1 test from 1 test suite ran. (0 ms total)
-[  PASSED  ] 1 test.
-```
-
-```
-$ cmake --build _build --target test -- ARGS=--verbose
-```
-```sh
-Running tests...
-UpdateCTestConfiguration  from :/home/kirill/Desktop/Leikmadur/workspace/lab06/_build/DartConfiguration.tcl
-Test project /home/kirill/Desktop/Leikmadur/workspace/lab06/_build
-Constructing a list of tests
-Done constructing a list of tests
-Updating test list for fixtures
-Added 0 tests to meet fixture requirements
-Checking test dependency graph...
-Checking test dependency graph end
-test 1
-    Start 1: check
-
-1: Test command: /home/kirill/Desktop/Leikmadur/workspace/lab06/_build/check
-1: Working Directory: /home/kirill/Desktop/Leikmadur/workspace/lab06/_build
-1: Test timeout computed to be: 10000000
-1: Running main() from /home/kirill/Desktop/Leikmadur/workspace/lab06/_build/_deps/googletest-src/googletest/src/gtest_main.cc
-1: [==========] Running 1 test from 1 test suite.
-1: [----------] Global test environment set-up.
-1: [----------] 1 test from Print
-1: [ RUN      ] Print.InFileStream
-1: [       OK ] Print.InFileStream (0 ms)
-1: [----------] 1 test from Print (0 ms total)
-1: 
-1: [----------] Global test environment tear-down
-1: [==========] 1 test from 1 test suite ran. (0 ms total)
-1: [  PASSED  ] 1 test.
-1/1 Test #1: check ............................   Passed    0.00 sec
-
-100% tests passed, 0 tests failed out of 1
-
-Total Test time (real) =   0.01 sec
-
-```
-```sh
-$ gsed -i 's/lab04/lab06/g' README.md
-
-$ mkdir -p .github/workflows
-
-$ cat > .github/workflows/ci.yml << 'EOF'
-name: CI
-
-on:
-  push:
-    branches: [ master, main ]
-  pull_request:
-    branches: [ master, main ]
-
-jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        submodules: recursive
-    
-    - name: Configure CMake
-      run: cmake -B _build -DBUILD_TESTS=ON
-    
-    - name: Build
-      run: cmake --build _build
-    
-    - name: Run tests
-      run: cmake --build _build --target test -- ARGS=--verbose
-EOF
-```
-
-
 
 ```sh
 $ git add .
 
-$ git commit -m "Update files"
-
-$ git push origin main
+$ git commit -m"added cpack config"
 ```
 
 ```sh
-$ mkdir artifacts
+[main 90d4c76] Added cpack config
+ 5 files changed, 81 insertions(+), 26 deletions(-)
+ create mode 100644 CPackConfig.cmake
+ create mode 100644 ChangeLog.md
+ create mode 100644 DESCRIPTION
 
-$ sleep 20s && gnome-screenshot --file artifacts/screenshot.png
-
-```
-
-
-## Homework
-
-### Задание
-1. Создайте `CMakeList.txt` для библиотеки *banking*.
-2. Создайте модульные тесты на классы `Transaction` и `Account`.
-    * Используйте mock-объекты.
-    * Покрытие кода должно составлять 100%.
-3. Настройте сборочную процедуру на **TravisCI**.
-4. Настройте [Coveralls.io](https://coveralls.io/).
-
-```sh
-$ cd banking
-
-$ nano CMakeLists.txt
-```
-
-Записываеm:
-
-```sh
-cmake_minimum_required(VERSION 3.14)
-project(banking)
-
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
-add_library(banking STATIC
-    Account.cpp
-    Transaction.cpp
-)
-
-target_include_directories(banking PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 ```
 
 ```sh
-$ mkdir tests
+$ git tag v0.1.0.0
 
-$ cd tests
-
-$ mkdir mocks
-
-$ cd mocks
-
-$ nano MockAccount.hpp
-```
-```sh
-#ifndef MOCK_ACCOUNT_HPP
-#define MOCK_ACCOUNT_HPP
-
-#include "Account.h"
-#include <gmock/gmock.h>
-
-class MockAccount : public Account {
-public:
-    MockAccount(int id, int balance) : Account(id, balance) {}
-    
-    // Новый синтаксис MOCK_METHOD для Google Mock 1.12+
-    MOCK_METHOD(int, GetBalance, (), (const));
-    MOCK_METHOD(void, ChangeBalance, (int diff));
-    MOCK_METHOD(void, Lock, ());
-    MOCK_METHOD(void, Unlock, ());
-};
-
-#endif
+$ git push origin main --tags
 ```
 
 ```sh
-$ nano MockTransaction.hpp
+Enumerating objects: 174, done.
+Counting objects: 100% (174/174), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (107/107), done.
+Writing objects: 100% (174/174), 231.66 KiB | 38.61 MiB/s, done.
+Total 174 (delta 50), reused 164 (delta 47), pack-reused 0
+remote: Resolving deltas: 100% (50/50), done.
+To https://github.com/Leikmadu/lab06
+ * [new branch]      main -> main
+ * [new tag]         v0.1.0.0 -> v0.1.0.0
+
 ```
 
 ```sh
-#ifndef MOCK_TRANSACTION_HPP
-#define MOCK_TRANSACTION_HPP
+$ mkdir -p .github/workflows
 
-#include "Transaction.h"
-#include <gmock/gmock.h>
-
-class MockTransaction : public Transaction {
-public:
-    MockTransaction() : Transaction() {}
-    
-    MOCK_METHOD(void, SaveToDataBase, (Account& from, Account& to, int sum));
-};
-
-#endif
+$ nano .github/workflows/ci.yml
 ```
 
 ```sh
+name: CI
 
-$ cd ..
+on: [push, pull_request]  # Запускать при пуше и создании pull request
 
-$ nano test_account.cpp
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Используем последнюю версию Ubuntu
+
+    steps:
+    - uses: actions/checkout@v4  # "Выкачиваем" код из репозитория
+
+    - name: Configure
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+    - name: Build
+      run: cmake --build build --config Release
+
+    - name: Package with CPack
+      run: cpack --config build/CPackConfig.cmake -G DEB  # Упаковываем в .deb
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4  # Сохраняем готовый пакет как артефакт сборки
+      with:
+        name: my-project-package
+        path: build/*.deb
 ```
 
 ```sh
-#include <gtest/gtest.h>
-#include "Account.h"
-
-TEST(AccountTest, Constructor) {
-    Account acc(1, 100);
-    EXPECT_EQ(acc.id(), 1);
-    EXPECT_EQ(acc.GetBalance(), 100);
-}
-
-TEST(AccountTest, LockAndChangeBalance) {
-    Account acc(1, 100);
-    acc.Lock();
-    acc.ChangeBalance(50);
-    EXPECT_EQ(acc.GetBalance(), 150);
-    acc.Unlock();
-}
-
-TEST(AccountTest, ChangeBalanceWithoutLockThrows) {
-    Account acc(1, 100);
-    EXPECT_THROW(acc.ChangeBalance(50), std::runtime_error);
-}
-
-TEST(AccountTest, LockTwiceThrows) {
-    Account acc(1, 100);
-    acc.Lock();
-    EXPECT_THROW(acc.Lock(), std::runtime_error);
-}
-
-TEST(AccountTest, UnlockWithoutLockDoesNothing) {
-    Account acc(1, 100);
-    EXPECT_NO_THROW(acc.Unlock());
-    EXPECT_NO_THROW(acc.Lock());
-}
+$ touch LICENSE
 ```
 
 ```sh
-
-$ nano test_transaction.cpp
+$ cmake -H. -B_build
 ```
 
-```sh
-#include <gtest/gtest.h>
-#include <gmock/gmock.h>
-#include "Transaction.h"
-#include "mocks/MockAccount.hpp"
-#include "mocks/MockTransaction.hpp"
-
-using ::testing::_;
-using ::testing::Return;
-using ::testing::Throw;
-
-// Попытка перевода на тот же счёт
-TEST(TransactionTest, SameAccountThrows) {
-    MockAccount acc(1, 1000);
-    Transaction tx;
-    EXPECT_THROW(tx.Make(acc, acc, 200), std::logic_error);
-}
-
-// Отрицательная сумма
-TEST(TransactionTest, NegativeSumThrows) {
-    MockAccount from(1, 1000);
-    MockAccount to(2, 500);
-    Transaction tx;
-    EXPECT_THROW(tx.Make(from, to, -100), std::invalid_argument);
-}
-
-// Сумма меньше 100
-TEST(TransactionTest, SumTooSmallThrows) {
-    MockAccount from(1, 1000);
-    MockAccount to(2, 500);
-    Transaction tx;
-    EXPECT_THROW(tx.Make(from, to, 50), std::logic_error);
-}
-
-// Комиссия слишком большая
-TEST(TransactionTest, FeeTooLargeReturnsFalse) {
-    MockAccount from(1, 1000);
-    MockAccount to(2, 500);
-    Transaction tx;
-    tx.set_fee(100);
-    EXPECT_CALL(from, GetBalance()).WillOnce(Return(1000));
-    EXPECT_FALSE(tx.Make(from, to, 150));
-}
-
-// Успешный перевод
-TEST(TransactionTest, SuccessfulTransfer) {
-    MockAccount from(1, 1000);
-    MockAccount to(2, 500);
-    Transaction tx;
-    tx.set_fee(1);
-
-    EXPECT_CALL(from, Lock()).Times(1);
-    EXPECT_CALL(to, Lock()).Times(1);
-    EXPECT_CALL(to, ChangeBalance(200)).Times(1);
-    EXPECT_CALL(from, GetBalance()).WillOnce(Return(1000));
-    EXPECT_CALL(from, ChangeBalance(-201)).Times(1);
-    EXPECT_CALL(from, Unlock()).Times(1);
-    EXPECT_CALL(to, Unlock()).Times(1);
-
-    EXPECT_TRUE(tx.Make(from, to, 200));
-}
-
-// Недостаточно средств - проверка ДО блокировки
-TEST(TransactionTest, InsufficientFunds) {
-    MockAccount from(1, 100);
-    MockAccount to(2, 500);
-    Transaction tx;
-    tx.set_fee(1);
-
-    // Ожидаем только вызов GetBalance для проверки
-    EXPECT_CALL(from, GetBalance()).WillOnce(Return(100));
-    
-    // Блокировки и изменения НЕ должны вызываться
-    EXPECT_CALL(from, Lock()).Times(0);
-    EXPECT_CALL(to, Lock()).Times(0);
-    EXPECT_CALL(to, ChangeBalance(_)).Times(0);
-    EXPECT_CALL(from, ChangeBalance(_)).Times(0);
-    EXPECT_CALL(from, Unlock()).Times(0);
-    EXPECT_CALL(to, Unlock()).Times(0);
-
-    EXPECT_FALSE(tx.Make(from, to, 150));
-}
-
-// Проверка вызова SaveToDataBase
-TEST(TransactionTest, SaveToDataBaseIsCalled) {
-    MockAccount from(1, 1000);
-    MockAccount to(2, 500);
-    MockTransaction tx;
-    tx.set_fee(1);
-
-    EXPECT_CALL(from, Lock()).Times(1);
-    EXPECT_CALL(to, Lock()).Times(1);
-    EXPECT_CALL(to, ChangeBalance(200)).Times(1);
-    EXPECT_CALL(from, GetBalance()).WillOnce(Return(1000));
-    EXPECT_CALL(from, ChangeBalance(-201)).Times(1);
-    EXPECT_CALL(tx, SaveToDataBase(_, _, 200)).Times(1);
-    EXPECT_CALL(from, Unlock()).Times(1);
-    EXPECT_CALL(to, Unlock()).Times(1);
-
-    EXPECT_TRUE(tx.Make(from, to, 200));
-}
-
-// Тест для покрытия catch блока
-TEST(TransactionTest, ExceptionDuringChangeBalanceTriggersRollback) {
-    MockAccount from(1, 1000);
-    MockAccount to(2, 500);
-    Transaction tx;
-    tx.set_fee(1);
-
-    EXPECT_CALL(from, Lock()).Times(1);
-    EXPECT_CALL(to, Lock()).Times(1);
-    EXPECT_CALL(to, ChangeBalance(200)).Times(1);
-    EXPECT_CALL(from, GetBalance()).WillOnce(Return(1000));
-    EXPECT_CALL(from, ChangeBalance(-201)).WillOnce(Throw(std::runtime_error("Test error")));
-    EXPECT_CALL(to, ChangeBalance(-200)).Times(1);
-    EXPECT_CALL(from, Unlock()).Times(1);
-    EXPECT_CALL(to, Unlock()).Times(1);
-
-    EXPECT_THROW(tx.Make(from, to, 200), std::runtime_error);
-}
-```
-
-```sh
-$ nano CMakeLists.txt
-```
-
-В корне папки обновим CMakeLists.txt:
-
-```sh
-cmake_minimum_required(VERSION 3.14)
-project(lab06)
-
-option(BUILD_TESTS "Build tests" OFF)
-option(COVERAGE "Enable coverage reporting" OFF)
-
-add_subdirectory(banking)
-
-if(COVERAGE)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage -O0 -g")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} --coverage -O0 -g")
-endif()
-
-if(BUILD_TESTS)
-    enable_testing()
-    
-    include(FetchContent)
-    FetchContent_Declare(
-        googletest
-        GIT_REPOSITORY https://github.com/google/googletest.git
-        GIT_TAG release-1.12.1
-    )
-    FetchContent_MakeAvailable(googletest)
-    
-    add_executable(banking_tests
-        banking/tests/test_account.cpp
-        banking/tests/test_transaction.cpp
-    )
-    
-    target_link_libraries(banking_tests banking gtest_main gmock_main)
-    target_include_directories(banking_tests PRIVATE banking)
-    
-    add_test(NAME banking_tests COMMAND banking_tests)
-endif()
-```
-
-```sh
-$ rm -rf _build
-
-$ cmake -H. -B_build -DBUILD_TESTS=ON
-```
-
-Вывод:
 ```sh
 -- The C compiler identification is GNU 13.3.0
 -- The CXX compiler identification is GNU 13.3.0
@@ -620,198 +298,447 @@ $ cmake -H. -B_build -DBUILD_TESTS=ON
 -- Check for working CXX compiler: /usr/bin/c++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Found Python: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
--- Found Threads: TRUE  
--- Configuring done (22.4s)
+-- Configuring done (1.0s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/kirill/Desktop/Leikmadur/workspace/lab06/_build
 
 ```
 
-```sh 
+
+```sh
 $ cmake --build _build
 ```
-```sh
-[  7%] Building CXX object _deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
-[ 14%] Linking CXX static library ../../../lib/libgtest.a
-[ 14%] Built target gtest
-[ 21%] Building CXX object _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
-[ 28%] Linking CXX static library ../../../lib/libgtest_main.a
-[ 28%] Built target gtest_main
-[ 35%] Building CXX object _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
-[ 42%] Linking CXX static library ../../../lib/libgmock.a
-[ 42%] Built target gmock
-[ 50%] Building CXX object _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
-[ 57%] Linking CXX static library ../../../lib/libgmock_main.a
-[ 57%] Built target gmock_main
-[ 64%] Building CXX object banking/CMakeFiles/banking.dir/Account.cpp.o
-[ 71%] Building CXX object banking/CMakeFiles/banking.dir/Transaction.cpp.o
-[ 78%] Linking CXX static library libbanking.a
-[ 78%] Built target banking
-[ 85%] Building CXX object CMakeFiles/banking_tests.dir/banking/tests/test_account.cpp.o
-[ 92%] Building CXX object CMakeFiles/banking_tests.dir/banking/tests/test_transaction.cpp.o
-[100%] Linking CXX executable banking_tests
-[100%] Built target banking_tests
-```
 
 ```sh
-$ ./banking_tests
-
-$ cmake --build _build --target test -- ARGS=--verbose
-```
-```sh
-Running tests...
-UpdateCTestConfiguration  from :/home/kirill/Desktop/Leikmadur/workspace/lab06/_build/DartConfiguration.tcl
-UpdateCTestConfiguration  from :/home/kirill/Desktop/Leikmadur/workspace/lab06/_build/DartConfiguration.tcl
-Test project /home/kirill/Desktop/Leikmadur/workspace/lab06/_build
-Constructing a list of tests
-Done constructing a list of tests
-Updating test list for fixtures
-Added 0 tests to meet fixture requirements
-Checking test dependency graph...
-Checking test dependency graph end
-test 1
-    Start 1: banking_tests
-
-1: Test command: /home/kirill/Desktop/Leikmadur/workspace/lab06/_build/banking_tests
-1: Working Directory: /home/kirill/Desktop/Leikmadur/workspace/lab06/_build
-1: Test timeout computed to be: 10000000
-1: Running main() from /home/kirill/Desktop/Leikmadur/workspace/lab06/_build/_deps/googletest-src/googletest/src/gtest_main.cc
-1: [==========] Running 13 tests from 2 test suites.
-1: [----------] Global test environment set-up.
-1: [----------] 5 tests from AccountTest
-1: [ RUN      ] AccountTest.Constructor
-1: [       OK ] AccountTest.Constructor (0 ms)
-1: [ RUN      ] AccountTest.LockAndChangeBalance
-1: [       OK ] AccountTest.LockAndChangeBalance (0 ms)
-1: [ RUN      ] AccountTest.ChangeBalanceWithoutLockThrows
-1: [       OK ] AccountTest.ChangeBalanceWithoutLockThrows (0 ms)
-1: [ RUN      ] AccountTest.LockTwiceThrows
-1: [       OK ] AccountTest.LockTwiceThrows (0 ms)
-1: [ RUN      ] AccountTest.UnlockWithoutLockDoesNothing
-1: [       OK ] AccountTest.UnlockWithoutLockDoesNothing (0 ms)
-1: [----------] 5 tests from AccountTest (0 ms total)
-1: 
-1: [----------] 8 tests from TransactionTest
-1: [ RUN      ] TransactionTest.SameAccountThrows
-1: [       OK ] TransactionTest.SameAccountThrows (0 ms)
-1: [ RUN      ] TransactionTest.NegativeSumThrows
-1: [       OK ] TransactionTest.NegativeSumThrows (0 ms)
-1: [ RUN      ] TransactionTest.SumTooSmallThrows
-1: [       OK ] TransactionTest.SumTooSmallThrows (0 ms)
-1: [ RUN      ] TransactionTest.FeeTooLargeReturnsFalse
-1: [       OK ] TransactionTest.FeeTooLargeReturnsFalse (0 ms)
-1: [ RUN      ] TransactionTest.SuccessfulTransfer
-1: Transaction saved: 1 -> 2 200
-1: 1 send to 2 $200
-1: [       OK ] TransactionTest.SuccessfulTransfer (0 ms)
-1: [ RUN      ] TransactionTest.InsufficientFunds
-1: [       OK ] TransactionTest.InsufficientFunds (0 ms)
-1: [ RUN      ] TransactionTest.SaveToDataBaseIsCalled
-1: 1 send to 2 $200
-1: [       OK ] TransactionTest.SaveToDataBaseIsCalled (0 ms)
-1: [ RUN      ] TransactionTest.ExceptionDuringChangeBalanceTriggersRollback
-1: [       OK ] TransactionTest.ExceptionDuringChangeBalanceTriggersRollback (0 ms)
-1: [----------] 8 tests from TransactionTest (1 ms total)
-1: 
-1: [----------] Global test environment tear-down
-1: [==========] 13 tests from 2 test suites ran. (2 ms total)
-1: [  PASSED  ] 13 tests.
-1/1 Test #1: banking_tests ....................   Passed    0.02 sec
-
-100% tests passed, 0 tests failed out of 1
-
-Total Test time (real) =   0.02 sec
+[ 33%] Building CXX object banking/CMakeFiles/banking.dir/Account.cpp.o
+[ 66%] Building CXX object banking/CMakeFiles/banking.dir/Transaction.cpp.o
+[100%] Linking CXX static library libbanking.a
+[100%] Built target banking
 
 ```
 
 ```sh
-$ gcovr -r . --filter '.*banking.*' --exclude '.*tests.*' --exclude '.*mocks.*' --print-summary
+$ cd _build
+
+$ cpack -G "TGZ"
+```
+
+```sh
+CPack: Create package using TGZ
+CPack: Install projects
+CPack: - Run preinstall target for: lab05
+CPack: - Install project: lab05 []
+CPack: Create package
+CPack: - package: /home/kirill/Desktop/Leikmadur/workspace/lab06/_build/lab05-0.1.1-Linux.tar.gz generated.
 
 ```
 
 ```sh
-(INFO) Reading coverage data...
-(INFO) Writing coverage report...
-------------------------------------------------------------------------------
-                           GCC Code Coverage Report
-Directory: .
-------------------------------------------------------------------------------
-File                                       Lines    Exec  Cover   Missing
-------------------------------------------------------------------------------
-/home/kirill/Desktop/Leikmadur/workspace/lab06/banking/Account.cpp
-                                              18      18   100%
-/home/kirill/Desktop/Leikmadur/workspace/lab06/banking/Account.h
-                                               1       1   100%
-/home/kirill/Desktop/Leikmadur/workspace/lab06/banking/Transaction.cpp
-                                              34      34   100%
-/home/kirill/Desktop/Leikmadur/workspace/lab06/banking/Transaction.h
-                                               1       1   100%
-------------------------------------------------------------------------------
-TOTAL                                         54      54   100%
-------------------------------------------------------------------------------
+$ cd ..
+```
 
+```sh
+$ cmake -H. -B_build -DCPACK_GENERATOR="TGZ"
+```
+
+```sh
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/kirill/Desktop/Leikmadur/workspace/lab06/_build
 
 ```
 
 ```sh
-$ cd .github/workflows
-
-$ nano ci.yml
+$ cmake --build _build --target package
 ```
 
-Исправленный ci.yml:
 ```sh
-name: CI
+[100%] Built target banking
+Run CPack packaging tool...
+CPack: Create package using TGZ
+CPack: Install projects
+CPack: - Run preinstall target for: lab05
+CPack: - Install project: lab05 []
+CPack: Create package
+CPack: - package: /home/kirill/Desktop/Leikmadur/workspace/lab06/_build/lab05-0.1.1-Linux.tar.gz generated.
 
-on: [push, pull_request]
+```
+
+```sh
+$ mv _build/*.tar.gz artifacts
+
+$ tree artifacts
+```
+
+```sh
+
+artifacts
+├── lab05-0.1.1-Linux.tar.gz
+└── screenshot.png
+locales-launch: Data of en_US locale not found, generating, please wait...
+artifacts
+├── lab05-0.1.1-Linux.tar.gz
+└── screenshot.png
+1 directory, 2 files
+
+```
+
+## Report
+
+```sh
+$ popd
+
+$ export LAB_NUMBER=06
+
+$ git clone https://github.com/tp-labs/lab${LAB_NUMBER} tasks/lab${LAB_NUMBER}
+
+$ mkdir reports/lab${LAB_NUMBER}
+
+$ cp tasks/lab${LAB_NUMBER}/README.md reports/lab${LAB_NUMBER}/REPORT.md
+
+$ cd reports/lab${LAB_NUMBER}
+
+$ edit REPORT.md
+
+$ gist REPORT.md
+```
+
+## Homework
+
+После того, как вы настроили взаимодействие с системой непрерывной интеграции,</br>
+обеспечив автоматическую сборку и тестирование ваших изменений, стоит задуматься</br>
+о создание пакетов для измениний, которые помечаются тэгами (см. вкладку [releases](https://github.com/tp-labs/lab06/releases)).</br>
+Пакет должен содержать приложение _solver_ из [предыдущего задания](https://github.com/tp-labs/lab03#задание-1)
+Таким образом, каждый новый релиз будет состоять из следующих компонентов:
+- архивы с файлами исходного кода (`.tar.gz`, `.zip`)
+- пакеты с бинарным файлом _solver_ (`.deb`, `.rpm`, `.msi`, `.dmg`)
+
+В качестве подсказки:
+```sh
+$ cat .travis.yml
+os: osx
+script:
+...
+- cpack -G DragNDrop # dmg
+
+$ cat .travis.yml
+os: linux
+script:
+...
+- cpack -G DEB # deb
+
+$ cat .travis.yml
+os: linux
+addons:
+  apt:
+    packages:
+    - rpm
+script:
+...
+- cpack -G RPM # rpm
+
+$ cat appveyor.yml
+platform:
+- x86
+- x64
+build_script:
+...
+- cpack -G WIX # msi
+```
+
+Для этого нужно добавить ветвление в конфигурационные файлы для **CI** со следующей логикой:</br>
+если **commit** помечен тэгом, то необходимо собрать пакеты (`DEB, RPM, WIX, DragNDrop, ...`) </br>
+и разместить их на сервисе **GitHub**. (см. пример для [Travi CI](https://docs.travis-ci.com/user/deployment/releases))</br>
+
+
+1. Обновляем CPackConfig.cmake для всех форматов
+
+```sh
+cat > CPackConfig.cmake <<'EOF'
+include(InstallRequiredSystemLibraries)
+
+set(CPACK_PACKAGE_CONTACT ${GITHUB_EMAIL})
+set(CPACK_PACKAGE_VERSION_MAJOR ${PRINT_VERSION_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR ${PRINT_VERSION_MINOR})
+set(CPACK_PACKAGE_VERSION_PATCH ${PRINT_VERSION_PATCH})
+set(CPACK_PACKAGE_VERSION_TWEAK ${PRINT_VERSION_TWEAK})
+set(CPACK_PACKAGE_VERSION ${PRINT_VERSION})
+set(CPACK_PACKAGE_DESCRIPTION_FILE ${CMAKE_CURRENT_SOURCE_DIR}/DESCRIPTION)
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "static C++ library for printing")
+
+set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_CURRENT_SOURCE_DIR}/LICENSE)
+set(CPACK_RESOURCE_FILE_README ${CMAKE_CURRENT_SOURCE_DIR}/README.md)
+
+# Настройки для RPM
+set(CPACK_RPM_PACKAGE_NAME "print-devel")
+set(CPACK_RPM_PACKAGE_LICENSE "MIT")
+set(CPACK_RPM_PACKAGE_GROUP "Development/Tools")
+set(CPACK_RPM_CHANGELOG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/ChangeLog.md)
+set(CPACK_RPM_PACKAGE_RELEASE 1)
+
+# Настройки для DEB
+set(CPACK_DEBIAN_PACKAGE_NAME "libprint-dev")
+set(CPACK_DEBIAN_PACKAGE_PREDEPENDS "cmake >= 3.0")
+set(CPACK_DEBIAN_PACKAGE_RELEASE 1)
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "build-essential")
+set(CPACK_DEBIAN_PACKAGE_SECTION "libdevel")
+
+# Настройки для WIX (Windows)
+set(CPACK_WIX_UPGRADE_GUID "12345678-1234-1234-1234-123456789012")
+set(CPACK_WIX_PRODUCT_ICON "${CMAKE_CURRENT_SOURCE_DIR}/icon.ico")
+set(CPACK_WIX_LICENSE_RTF "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.rtf")
+
+# Настройки для DragNDrop (macOS)
+set(CPACK_DMG_BACKGROUND_IMAGE "${CMAKE_CURRENT_SOURCE_DIR}/background.png")
+set(CPACK_DMG_VOLUME_NAME "print-installer")
+
+include(CPack)
+EOF
+
+```
+2. Создаем LICENSE.rtf для WIX
+
+```sh
+
+cat > LICENSE.rtf <<'EOF'
+{\rtf1\ansi\deff0 {\fonttbl {\f0 Times New Roman;}}\f0\fs24
+\b MIT License\b0\line
+\line
+Copyright (c) 2025 Leikmadu\line
+\line
+Permission is hereby granted, free of charge, to any person obtaining a copy\line
+of this software and associated documentation files (the "Software"), to deal\line
+in the Software without restriction, including without limitation the rights\line
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\line
+copies of the Software, and to permit persons to whom the Software is\line
+furnished to do so, subject to the following conditions:\line
+\line
+The above copyright notice and this permission notice shall be included in all\line
+copies or substantial portions of the Software.\line
+\line
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\line
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\line
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\line
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\line
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\line
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\line
+SOFTWARE.\line
+}
+EOF
+
+```
+3. Обновляем .github/workflows/ci.yml для создания релизов
+
+```sh
+
+cat > .github/workflows/ci.yml <<'EOF'
+name: Create Release Packages
+
+on:
+  push:
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ master, main ]
 
 jobs:
-  build:
+  build_linux:
+    name: Build Linux packages (deb, rpm)
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y cmake lcov gcovr libgtest-dev libgmock-dev
+      - name: Install RPM build tools
+        run: sudo apt-get update && sudo apt-get install -y rpm
 
-      - name: Configure CMake with coverage
-        run: cmake -B _build -DBUILD_TESTS=ON -DCMAKE_CXX_FLAGS="--coverage -O0 -g -w"
+      - name: Configure CMake
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
 
       - name: Build
-        run: cmake --build _build
+        run: cmake --build build --config Release
 
-      - name: Run tests
-        working-directory: _build
-        run: ctest --verbose
+      - name: Package DEB
+        run: cd build && cpack -G DEB -C Release
 
-      - name: Collect coverage with gcovr
-        working-directory: _build
-        run: |
-          gcovr -r . --filter '.*/banking/.*' \
-            --exclude '.*/tests/.*' \
-            --exclude '.*/mocks/.*' \
-            --xml coverage.xml
+      - name: Package RPM
+        run: cd build && cpack -G RPM -C Release
 
-      - name: Upload coverage to Coveralls
-        uses: coverallsapp/github-action@v2
+      - name: Upload Linux packages
+        uses: actions/upload-artifact@v4
         with:
-          file: _build/coverage.xml
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          name: linux-packages
+          path: |
+            build/*.deb
+            build/*.rpm
+
+  build_windows:
+    name: Build Windows package (msi)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Configure CMake
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Package MSI (WIX)
+        run: cd build && cpack -G WIX -C Release
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-package
+          path: build/*.msi
+
+  build_macos:
+    name: Build macOS package (dmg)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Configure CMake
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --config Release
+
+      - name: Package DMG (DragNDrop)
+        run: cd build && cpack -G DragNDrop -C Release
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-package
+          path: build/*.dmg
+
+  create_release:
+    name: Create GitHub Release and upload assets
+    needs: [build_linux, build_windows, build_macos]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    permissions:
+      contents: write
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: List files
+        run: ls -R artifacts
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            artifacts/linux-packages/*.deb
+            artifacts/linux-packages/*.rpm
+            artifacts/windows-package/*.msi
+            artifacts/macos-package/*.dmg
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+EOF
 ```
+4. Добавляем установку solver в корневой CMakeLists.txt
+
+```sh
+
+cat >> CMakeLists.txt <<'EOF'
+
+# Установка исполняемых файлов
+install(TARGETS solver DESTINATION bin)
+install(TARGETS hello_world DESTINATION bin)
+install(TARGETS banking DESTINATION lib)
+install(FILES banking/Account.h banking/Transaction.h DESTINATION include)
+EOF
+```
+
+
+5. Вставляем такой текст в LICENSE:
+
+```sh
+MIT License
+
+Copyright (c) 2026 Leikmadu
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+
+
+6. Коммитим и пушим изменения
 
 ```sh
 $ git add .
 
-$ git commit -n "Update files"
+$ git commit -m "Add full CPack configuration for DEB, RPM, MSI, DMG"
+```
 
+```sh
+[main fc89d10] Add full CPack configuration for DEB, RPM, MSI, DMG
+ 6 files changed, 140 insertions(+), 46 deletions(-)
+ create mode 100644 LICENSE
+ create mode 100644 LICENSE.rtf
+ create mode 100644 artifacts/lab05-0.1.1-Linux.tar.gz
+```
+
+```sh
 $ git push origin main
 ```
 
+```sh
+Enumerating objects: 17, done.
+Counting objects: 100% (17/17), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (10/10), 2.77 KiB | 2.77 MiB/s, done.
+Total 10 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/Leikmadu/lab06
+   90d4c76..fc89d10  main -> main
+```
+
+7. Cоздаем тэг:
+
+```sh
+$ git tag v1.0.4
+```
+
+```sh
+$ git push origin v1.0.4
+```
+
+```sh
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Leikmadu/lab06
+ * [new tag]         v1.0.4 -> v1.0.4
+```
+
+```
+Copyright (c) 2015-2021 The ISC Authors
+```
