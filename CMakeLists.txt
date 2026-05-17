@@ -32,3 +32,6 @@ if(BUILD_TESTS)
     
     add_test(NAME banking_tests COMMAND banking_tests)
 endif()
+
+include(CPackConfig.cmake)
+

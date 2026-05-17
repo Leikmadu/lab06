@@ -8,7 +8,7 @@ $ open https://github.com/google/googletest
 
 ## Tasks
 
-- [ ] 1. Создать публичный репозиторий с названием **lab05** на сервисе **GitHub**
+- [ ] 1. Создать публичный репозиторий с названием **lab06** на сервисе **GitHub**
 - [ ] 2. Выполнить инструкцию учебного материала
 - [ ] 3. Ознакомиться со ссылками учебного материала
 - [ ] 4. Составить отчет и отправить ссылку личным сообщением в **Slack**
@@ -36,11 +36,11 @@ $ source scripts/activate
 ```
 
 ```sh
-$ git clone https://github.com/Leikmadu/lab04 lab05
+$ git clone https://github.com/Leikmadu/lab04 lab06
 ```
 
 ```sh
-Cloning into 'lab05'...
+Cloning into 'lab06'...
 remote: Enumerating objects: 120, done.
 remote: Counting objects: 100% (120/120), done.
 remote: Compressing objects: 100% (79/79), done.
@@ -50,11 +50,11 @@ Resolving deltas: 100% (35/35), done.
 ```
 
 ```sh
-$ cd projects/lab05
+$ cd projects/lab06
 
 $ git remote remove origin
 
-$ git remote add origin https://github.com/${GITHUB_USERNAME}/lab05
+$ git remote add origin https://github.com/${GITHUB_USERNAME}/lab06
 ```
 
 ```sh
@@ -64,7 +64,7 @@ $ git submodule add https://github.com/google/googletest third-party/gtest
 ```
 
 ```sh
-Cloning into '/home/kirill/Desktop/Leikmadur/workspace/lab05/third-party/gtest'...
+Cloning into '/home/kirill/Desktop/Leikmadur/workspace/lab06/third-party/gtest'...
 remote: Enumerating objects: 28637, done.
 remote: Counting objects: 100% (73/73), done.
 remote: Compressing objects: 100% (52/52), done.
@@ -184,7 +184,7 @@ $ cmake --build _build --target test
 
 ```sh
 Running tests...
-Test project /home/kirill/Desktop/Leikmadur/workspace/lab05/_build
+Test project /home/kirill/Desktop/Leikmadur/workspace/lab06/_build
     Start 1: check
 1/1 Test #1: check ............................   Passed    0.00 sec
 
@@ -198,7 +198,7 @@ $ _build/check
 ```
 
 ```sh
-Running main() from /home/kirill/Desktop/Leikmadur/workspace/lab05/_build/_deps/googletest-src/googletest/src/gtest_main.cc
+Running main() from /home/kirill/Desktop/Leikmadur/workspace/lab06/_build/_deps/googletest-src/googletest/src/gtest_main.cc
 [==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from Print
@@ -216,8 +216,8 @@ $ cmake --build _build --target test -- ARGS=--verbose
 ```
 ```sh
 Running tests...
-UpdateCTestConfiguration  from :/home/kirill/Desktop/Leikmadur/workspace/lab05/_build/DartConfiguration.tcl
-Test project /home/kirill/Desktop/Leikmadur/workspace/lab05/_build
+UpdateCTestConfiguration  from :/home/kirill/Desktop/Leikmadur/workspace/lab06/_build/DartConfiguration.tcl
+Test project /home/kirill/Desktop/Leikmadur/workspace/lab06/_build
 Constructing a list of tests
 Done constructing a list of tests
 Updating test list for fixtures
@@ -227,10 +227,10 @@ Checking test dependency graph end
 test 1
     Start 1: check
 
-1: Test command: /home/kirill/Desktop/Leikmadur/workspace/lab05/_build/check
-1: Working Directory: /home/kirill/Desktop/Leikmadur/workspace/lab05/_build
+1: Test command: /home/kirill/Desktop/Leikmadur/workspace/lab06/_build/check
+1: Working Directory: /home/kirill/Desktop/Leikmadur/workspace/lab06/_build
 1: Test timeout computed to be: 10000000
-1: Running main() from /home/kirill/Desktop/Leikmadur/workspace/lab05/_build/_deps/googletest-src/googletest/src/gtest_main.cc
+1: Running main() from /home/kirill/Desktop/Leikmadur/workspace/lab06/_build/_deps/googletest-src/googletest/src/gtest_main.cc
 1: [==========] Running 1 test from 1 test suite.
 1: [----------] Global test environment set-up.
 1: [----------] 1 test from Print
@@ -249,7 +249,7 @@ Total Test time (real) =   0.01 sec
 
 ```
 ```sh
-$ gsed -i 's/lab04/lab05/g' README.md
+$ gsed -i 's/lab04/lab06/g' README.md
 
 $ mkdir -p .github/workflows
 
@@ -565,7 +565,7 @@ $ nano CMakeLists.txt
 
 ```sh
 cmake_minimum_required(VERSION 3.14)
-project(lab05)
+project(lab06)
 
 option(BUILD_TESTS "Build tests" OFF)
 option(COVERAGE "Enable coverage reporting" OFF)
@@ -626,7 +626,7 @@ $ cmake -H. -B_build -DBUILD_TESTS=ON
 -- Found Threads: TRUE  
 -- Configuring done (22.4s)
 -- Generating done (0.0s)
--- Build files have been written to: /home/kirill/Desktop/Leikmadur/workspace/lab05/_build
+-- Build files have been written to: /home/kirill/Desktop/Leikmadur/workspace/lab06/_build
 
 ```
 
@@ -663,9 +663,9 @@ $ cmake --build _build --target test -- ARGS=--verbose
 ```
 ```sh
 Running tests...
-UpdateCTestConfiguration  from :/home/kirill/Desktop/Leikmadur/workspace/lab05/_build/DartConfiguration.tcl
-UpdateCTestConfiguration  from :/home/kirill/Desktop/Leikmadur/workspace/lab05/_build/DartConfiguration.tcl
-Test project /home/kirill/Desktop/Leikmadur/workspace/lab05/_build
+UpdateCTestConfiguration  from :/home/kirill/Desktop/Leikmadur/workspace/lab06/_build/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/home/kirill/Desktop/Leikmadur/workspace/lab06/_build/DartConfiguration.tcl
+Test project /home/kirill/Desktop/Leikmadur/workspace/lab06/_build
 Constructing a list of tests
 Done constructing a list of tests
 Updating test list for fixtures
@@ -675,10 +675,10 @@ Checking test dependency graph end
 test 1
     Start 1: banking_tests
 
-1: Test command: /home/kirill/Desktop/Leikmadur/workspace/lab05/_build/banking_tests
-1: Working Directory: /home/kirill/Desktop/Leikmadur/workspace/lab05/_build
+1: Test command: /home/kirill/Desktop/Leikmadur/workspace/lab06/_build/banking_tests
+1: Working Directory: /home/kirill/Desktop/Leikmadur/workspace/lab06/_build
 1: Test timeout computed to be: 10000000
-1: Running main() from /home/kirill/Desktop/Leikmadur/workspace/lab05/_build/_deps/googletest-src/googletest/src/gtest_main.cc
+1: Running main() from /home/kirill/Desktop/Leikmadur/workspace/lab06/_build/_deps/googletest-src/googletest/src/gtest_main.cc
 1: [==========] Running 13 tests from 2 test suites.
 1: [----------] Global test environment set-up.
 1: [----------] 5 tests from AccountTest
@@ -741,13 +741,13 @@ Directory: .
 ------------------------------------------------------------------------------
 File                                       Lines    Exec  Cover   Missing
 ------------------------------------------------------------------------------
-/home/kirill/Desktop/Leikmadur/workspace/lab05/banking/Account.cpp
+/home/kirill/Desktop/Leikmadur/workspace/lab06/banking/Account.cpp
                                               18      18   100%
-/home/kirill/Desktop/Leikmadur/workspace/lab05/banking/Account.h
+/home/kirill/Desktop/Leikmadur/workspace/lab06/banking/Account.h
                                                1       1   100%
-/home/kirill/Desktop/Leikmadur/workspace/lab05/banking/Transaction.cpp
+/home/kirill/Desktop/Leikmadur/workspace/lab06/banking/Transaction.cpp
                                               34      34   100%
-/home/kirill/Desktop/Leikmadur/workspace/lab05/banking/Transaction.h
+/home/kirill/Desktop/Leikmadur/workspace/lab06/banking/Transaction.h
                                                1       1   100%
 ------------------------------------------------------------------------------
 TOTAL                                         54      54   100%
